@@ -52,7 +52,8 @@
     --secondary-color: hsl(4, 69%, 50%);
     --form-container: #e3f4fc;
     --results-container: #133040;
-    --form-container__content_light: #626b6f;
+    --span-input_background: #e3f4fc;
+    --form-container__content_light: #7e8f92;
     --form-container__content_dark: #0b222b;
     --form-container__image: #82b0cd;
     --font-size: 16px;
@@ -99,6 +100,17 @@
     }
   }
 
+  form {
+    & > div:not(.form-group) {
+      &:has(> :nth-child(2):last-child) {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+  }
+
   .mortgage-form__content {
     & > :first-child {
       display: flex;
@@ -131,10 +143,9 @@
     }
   }
 
-  @scope (fieldset) {
-    label {
-      color: var(--form-container__content_dark);
-    }
+  legend {
+    padding-bottom: 10px;
+    color: var(--form-container__content_light);
   }
 
   .mortgage-form__image {
@@ -156,8 +167,20 @@
     }
   }
 
+  label {
+    position: relative;
+  }
+
   .form-group {
     padding-bottom: 1.5rem;
+    
+    & > div {
+      position: relative;
+    }
+
+    span {
+      position: absolute;
+    }
   }
   
   button[type="submit"] {
@@ -174,15 +197,102 @@
     }
   }
 
+  @scope (fieldset) {
+    label {
+      color: var(--form-container__content_dark);
+      padding-left: 2.5rem;
+
+      &:hover input {
+        & ~ .checkmark {
+          background-color: #ccc;
+        }
+      }
+
+      input:checked ~ .checkmark {
+        background-color: #2196F3;
+
+        &::after {
+          display: block;
+        }
+      }
+    }
+  }
+
   fieldset {
     padding-bottom: 2rem;
     padding-left: 0;
     border: 0;
 
-    & div {
+    div {
       border: 1px solid var(--form-container__content_light);
       border-radius: 4px;
       padding: 10px;
       margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 20px;
+      width: 20px;
+      border: 1px solid var(--form-container__content_light);
+      border-radius: 50%;
+
+      &::after {
+        content: "";
+        position: absolute;
+        display: none;
+      }
+    }
+
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+  }
+
+  input {
+    & + span {
+      background-color: var(--span-input_background);
+      width: 2.5rem;
+      text-align: center;
+      height: 100%;
+      border-top: 1px solid var(--form-container__content_light);
+      border-bottom: 1px solid var(--form-container__content_light);
+      line-height: 46px;
+    }
+
+    &[name="amount"] {
+      padding-left: 3rem;
+  
+      & + span {
+        left: 0;
+        border-radius: 4px 0 0 4px;
+        border-left: 1px solid var(--form-container__content_light);
+      }
+    }
+    &[name="term"] {
+      padding-right: 3rem;
+  
+      & + span {
+        right: 0;
+        border-radius: 0 4px 4px 0;
+        border-right: 1px solid var(--form-container__content_light);
+        width: 4rem;
+      }
+    }
+    &[name="interest"] {
+      padding-right: 3rem;
+  
+      & + span {
+        right: 0;
+        border-radius: 0 4px 4px 0;
+        border-right: 1px solid var(--form-container__content_light);
+      }
     }
   }
