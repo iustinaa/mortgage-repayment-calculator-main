@@ -209,7 +209,8 @@
       }
 
       input:checked ~ .checkmark {
-        background-color: #2196F3;
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
 
         &::after {
           display: block;
@@ -239,6 +240,7 @@
       width: 20px;
       border: 1px solid var(--form-container__content_light);
       border-radius: 50%;
+      background-color: #fff;
 
       &::after {
         content: "";
@@ -295,4 +297,30 @@
         border-right: 1px solid var(--form-container__content_light);
       }
     }
+
+    &:focus-visible {
+      border: 1px solid var(--primary-color) !important;
+      outline: 0;
+    }
   }
+
+  /*on-click, focus, hover behaviour*/
+  .form-group {
+    & .input_clicked {
+      border-color: var(--primary-color) !important;
+
+    & + span {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color) !important;
+    }
+  }
+  }
+
+  
+    fieldset {
+      & div:has(input:checked) {
+        border-color: var(--primary-color);
+        background-color:hsla(61, 70%, 52%, .1);
+      }
+    }
+  
