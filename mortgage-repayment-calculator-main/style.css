@@ -53,8 +53,8 @@
     --form-container: #e3f4fc;
     --results-container: #133040;
     --span-input_background: #e3f4fc;
-    --form-container__content_light: #7e8f92;
-    --form-container__content_dark: #0b222b;
+    --form-container__content_light: #bbc8cf;
+    --form-container__content_dark: #202b2b;
     --form-container__image: #82b0cd;
     --font-size: 16px;
   }
@@ -181,6 +181,15 @@
     span {
       position: absolute;
     }
+
+    & .input_clicked {
+      border-color: var(--primary-color) !important;
+
+    & + span {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color) !important;
+      }
+    }
   }
   
   button[type="submit"] {
@@ -230,6 +239,10 @@
       padding: 10px;
       margin-bottom: 1rem;
       position: relative;
+
+      &:hover {
+        border-color: var(--primary-color);
+      }
     }
 
     .checkmark {
@@ -255,6 +268,11 @@
       cursor: pointer;
       height: 0;
       width: 0;
+    }
+
+    & div:has(input:checked) {
+      border-color: var(--primary-color);
+      background-color:hsla(61, 70%, 52%, .1);
     }
   }
 
@@ -302,25 +320,16 @@
       border: 1px solid var(--primary-color) !important;
       outline: 0;
     }
-  }
 
-  /*on-click, focus, hover, required behaviour*/
-  .form-group {
-    & .input_clicked {
-      border-color: var(--primary-color) !important;
+    &:hover {
+      border-color: var(--form-container__content_dark);
 
-    & + span {
-      background-color: var(--primary-color);
-      border-color: var(--primary-color) !important;
+      & + span {
+        border-color: var(--form-container__content_dark);
       }
     }
-  }
 
-  /* div:has(input:invalid) label {
-    color: red;
-  } */
-
-  input:invalid.invalid {
+    &:invalid.invalid {
       border-color: var(--secondary-color) !important;
 
       & + span {
@@ -329,11 +338,6 @@
         color: #fff;
       }
     }
+  }
 
-    fieldset {
-      & div:has(input:checked) {
-        border-color: var(--primary-color);
-        background-color:hsla(61, 70%, 52%, .1);
-      }
-    }
   
