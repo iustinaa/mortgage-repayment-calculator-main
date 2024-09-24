@@ -259,7 +259,7 @@
   }
 
   input {
-    & + span {
+    &+span {
       background-color: var(--span-input_background);
       width: 2.5rem;
       text-align: center;
@@ -304,7 +304,7 @@
     }
   }
 
-  /*on-click, focus, hover behaviour*/
+  /*on-click, focus, hover, required behaviour*/
   .form-group {
     & .input_clicked {
       border-color: var(--primary-color) !important;
@@ -312,11 +312,24 @@
     & + span {
       background-color: var(--primary-color);
       border-color: var(--primary-color) !important;
+      }
     }
   }
-  }
 
-  
+  /* div:has(input:invalid) label {
+    color: red;
+  } */
+
+  input:invalid.invalid {
+      border-color: var(--secondary-color) !important;
+
+      & + span {
+        border-color: var(--secondary-color);
+        background-color: var(--secondary-color);
+        color: #fff;
+      }
+    }
+
     fieldset {
       & div:has(input:checked) {
         border-color: var(--primary-color);

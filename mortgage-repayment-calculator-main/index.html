@@ -8,8 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
-  
   <title>Mortgage repayment calculator</title>
 
 </head>
@@ -22,11 +20,11 @@
           <h1 class="plus-jakarta-sans-bold">Mortgage Calculator</h1>
           <button>Clear All</button>
         </div>
-        <form action="" method="post">
+        <form id="myForm" action="" method="post">
           <div class="form-group">
             <label for="amount">Mortgage Amount</label>
             <div>
-              <input type="text" id="amount" name="amount"placeholder="Amount">
+              <input type="text" id="amount" name="amount"placeholder="Amount" required>
               <span>$</span>
             </div>
           </div>
@@ -34,14 +32,14 @@
             <div class="form-group">
               <label for="term">Mortgage Term</label>
               <div>
-                <input type="text" id="term" name="term" placeholder="Mortgage Term">
+                <input type="text" id="term" name="term" placeholder="Mortgage Term" required>
                 <span>years</span>
               </div>
             </div>
             <div class="form-group">
               <label for="interest">Interest Rate</label>
               <div>
-                <input type="text" id="interest" name="interest" placeholder="Interest Rate">
+                <input type="text" id="interest" name="interest" placeholder="Interest Rate" required>
                 <span>%</span>
               </div>
             </div>
@@ -50,18 +48,18 @@
             <legend>Mortgage Type</legend>
             <div>
                 <label class="plus-jakarta-sans-bold" for="repayment">Repayment
-                  <input type="checkbox" id="repayment" name="repayment" placeholder="Repayment">
+                  <input type="checkbox" id="repayment" name="repayment" placeholder="Repayment" required>
                 <span class="checkmark"></span>
                 </label>
             </div>
             <div>
                 <label class="plus-jakarta-sans-bold" for="interest-only">Interest Only
-                  <input type="checkbox" id="interest-only" name="interest-only" placeholder="Interest-only">
+                  <input type="checkbox" id="interest-only" name="interest-only" placeholder="Interest-only" required>
                 <span class="checkmark"></span>
                 </label>
             </div>
         </fieldset>
-          <button class="plus-jakarta-sans-bold" type="submit">Calculate Repayments</button>
+          <button id="submit" class="plus-jakarta-sans-bold" type="submit">Calculate Repayments</button>
         </form>
       </div>
       <aside class="mortgage-form__image">
@@ -72,5 +70,6 @@
     </div>
   </div>
   
+  <script src="script.js"></script>
 </body>
 </html>
