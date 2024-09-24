@@ -87,16 +87,28 @@
 
   .mortgage-form {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);/*2 equals columns*/
     grid-template-rows: auto;
+    grid-template-columns: 1fr;
     gap: 10px;
-    margin: 10rem;
+    margin: 2rem;
     background-color: #fff;
     border: 1px solid #fff;
     border-radius: 20px;
 
+    @media screen and (width >= 769px) {
+      grid-template-columns: repeat(2, 1fr);/*2 equals columns*/
+    }
+
+    @media screen and (width >= 992px) {
+      margin: 10rem;
+    }
+
     & > * {
-      padding: 2rem;
+      padding: .5rem;
+
+      @media screen and (width >= 400px) {
+        padding: 2rem;
+      }
     }
   }
 
@@ -105,8 +117,11 @@
       &:has(> :nth-child(2):last-child) {
         display: flex;
         flex-wrap: wrap;
-        flex-direction: row;
         justify-content: space-between;
+
+        @media screen and (width >= 769px) {
+          flex-direction: row;
+        }
       }
     }
   }
@@ -152,11 +167,14 @@
     background-color: var(--results-container);
     color: #fff;
     text-align: center;
-    border-bottom-left-radius: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    @media screen and (width >= 769px) {
+      border-bottom-left-radius: 60px;
+    }
 
     h1 {
       padding-bottom: 1rem;
@@ -190,19 +208,35 @@
       border-color: var(--primary-color) !important;
       }
     }
+
+    @media screen and (width <= 768px) {
+      width: 100%;
+    }
   }
   
   button[type="submit"] {
     background-color: var(--primary-color);
     border: 1px solid var(--primary-color);
     border-radius: 20px;
-    padding: 10px 30px 10px 60px;
+    padding: 10px 20px 10px 20px;
     position: relative;
+
+    @media screen and (width <= 768px) {
+      width: 100%;
+    }
+
+    @media screen and (width >= 400px) {
+      padding: 10px 30px 10px 60px;
+    }
 
     &::before {
       position: absolute;
       content: url("assets/images/icon-calculator.svg");
-      left: 2rem;
+      left: .5rem;
+
+      @media screen and (width >= 400px) {
+        left: 2rem;
+      }
     }
   }
 
@@ -232,6 +266,10 @@
     padding-bottom: 2rem;
     padding-left: 0;
     border: 0;
+
+    @media screen and (width <= 768px) {
+      padding-right: 0;
+    }
 
     div {
       border: 1px solid var(--form-container__content_light);
@@ -339,5 +377,9 @@
       }
     }
   }
+
+  /*responsive*/
+
+  
 
   
