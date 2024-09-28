@@ -97,7 +97,7 @@
     border-radius: 20px;
 
     @media screen and (width >= 769px) {
-      grid-template-columns: repeat(2, 1fr);/*2 equals columns*/
+      grid-template-columns: repeat(2, minmax(0, 1fr));/*2 equals columns*/
     }
 
     @media screen and (width >= 992px) {
@@ -186,7 +186,7 @@
 
     & .mortgage-form_empty {
       text-align: center;
-      display: none;
+      /* display: none; */
     }
 
     & .mortgage-form_completed__info {
@@ -202,6 +202,10 @@
   }
 
   .mortgage-form_completed {
+    display: none;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    hyphens: auto;
     p {
       padding-bottom: 2rem;;
     }
